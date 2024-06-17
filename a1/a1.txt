@@ -1,0 +1,107 @@
+cd cs131
+mkdir a1
+cd a1
+~
+cd /
+
+
+2.
+-bash: /mnt/scratch/shaswatsu24: Is a directory
+
+3.
+id:
+
+uid=1267(shaswatsu24) gid=1268(shaswatsu24) groups=1268(shaswatsu24)
+
+4.
+meminfo
+cpuinfo
+
+5.
+head meminfo:
+
+MemTotal:       73080640 kB
+MemFree:         8579840 kB
+MemAvailable:   44010176 kB
+Buffers:          421952 kB
+Cached:         38693824 kB
+SwapCached:            0 kB
+Active:         19329984 kB
+Inactive:       24359168 kB
+Active(anon):    2406784 kB
+Inactive(anon):  5865536 kB
+
+6.
+head cpuinfo:
+
+processor	: 0
+cpu		: POWER8 (architected), altivec supported
+clock		: 3425.000000MHz
+revision	: 2.1 (pvr 004b 0201)
+
+processor	: 1
+cpu		: POWER8 (architected), altivec supported
+clock		: 3425.000000MHz
+revision	: 2.1 (pvr 004b 0201)
+
+tail cpuinfo:
+
+processor	: 255
+cpu		: POWER8 (architected), altivec supported
+clock		: 3425.000000MHz
+revision	: 2.1 (pvr 004b 0201)
+
+timebase	: 512000000
+platform	: pSeries
+model		: IBM,8247-22L
+machine		: CHRP IBM,8247-22L
+MMU		: Hash
+
+cat cpuinfo: 
+
+255 Processors, POWER8 Architecture, 3.425 GHz
+
+7.
+os-release file
+
+NAME="Red Hat Enterprise Linux"
+VERSION="8.6 (Ootpa)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="8.6"
+PLATFORM_ID="platform:el8"
+PRETTY_NAME="Red Hat Enterprise Linux 8.6 (Ootpa)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:8::baseos"
+HOME_URL="https://www.redhat.com/"
+DOCUMENTATION_URL="https://access.redhat.com/documentation/red_hat_enterprise_linux/8/"
+BUG_REPORT_URL="https://bugzilla.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 8"
+REDHAT_BUGZILLA_PRODUCT_VERSION=8.6
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="8.6"
+
+8.
+Average total amount: 18.6652
+
+9. 
+Highest total amount: 460.04
+
+10.
+39907 236.0
+37139 237.0
+36989 161.0
+33675 230.0
+28503 170.0
+27893 162.0
+27482 48.0
+26782 142.0
+25049 239.0
+24608 234.0
+
+
+
+
+
+
