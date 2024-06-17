@@ -1,8 +1,4 @@
-cd cs131
-mkdir a1
-cd a1
-~
-cd /
+
 
 
 2.
