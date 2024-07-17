@@ -1,0 +1,13 @@
+1. sed -n '/^1\.0,/p' 2019-10.csv > vendor2.csv
+wc vendor2.csv
+
+2. sed -n '/^1\.0,/p' 2019-10.csv > vendor2.csv
+wc vendor2.csv
+
+3. sed 's/\.[0-9]*//g' no-separators.csv > no-fractions.csv
+head -10 no-fractions.csv
+
+4. awk -F, '$17 >= 10 {tips[$14]++} END {for (tip in tips) print tip, tips[tip]}' 2019-10.csv > results.txt
+
+5. sort -t' ' -k2,2nr results.txt | head -5 
+
