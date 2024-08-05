@@ -63,3 +63,18 @@ plt.xticks(rotation=45, ha='right', fontsize=12)  # Rotate x-axis labels
 plt.yticks(fontsize=12)
 plt.tight_layout()
 plt.show()
+
+#heatmap
+df_encoded = pd.get_dummies(df, drop_first=True)
+
+# calculate  correlation matrix
+correlation_matrix = df_encoded.corr()
+
+plt.figure(figsize=(14, 10))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, vmin=-1, vmax=1)
+
+plt.title('Heatmap of Feature Correlations', fontsize=16)
+plt.xlabel('Features', fontsize=14)
+plt.ylabel('Features', fontsize=14)
+plt.tight_layout()
+plt.show()
