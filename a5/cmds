@@ -1,0 +1,65 @@
+from ucimlrepo import fetch_ucirepo 
+import pandas as pd
+import numpy as np
+import seaborn as sns
+from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn import preprocessing
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScalera
+
+lungcsv = r'dataset.csv'
+df = pd.read_csv(lungcsv)
+
+print(df.head())
+
+df.describe()
+
+df.info()
+
+#compare total count for gender
+sns.countplot(data=df, x='GENDER')
+plt.show()
+
+#compare total count with/without lung cancer
+sns.countplot(data=df, x='LUNG_CANCER')
+plt.show()
+
+#check dupes
+duplicates = data[data.duplicated(keep= False)]
+print(duplicates)
+
+#check length before/after dropping dupes
+print('Length before dropping duplicates: ', len(data))
+data.drop_duplicates(inplace= True)
+print('Length after dropping duplicates: ', len(data))
+
+# age of patients with cancer diagnosis
+sns.histplot(data[data['LUNG_CANCER'] == 'YES'] ['AGE'])
+plt.title("Age of Positive Cancer Diagnosis")
+plt.ylabel('Number of People')
+
+# age of patients with negative cancer diagnosis
+sns.histplot(data[data['LUNG_CANCER'] == 'NO'] ['AGE'])
+plt.title("Age of Negative Cancer Diagnosis")
+
+
+
+#comparing genders' cancer diagnosis by age
+
+df['LUNG_CANCER'] = df['LUNG_CANCER'].astype(str)
+
+#filter for pos cancer diagnosis
+positive_cancer_df = df[df['LUNG_CANCER'] == 'YES']
+
+plt.figure(figsize=(14, 8))
+
+sns.countplot(data=positive_cancer_df, x='AGE', hue='GENDER')
+
+plt.title("Number of Patients with Cancer by Age and Gender", fontsize=16)
+plt.xlabel("Age", fontsize=14)
+plt.ylabel("Count", fontsize=14)
+plt.xticks(rotation=45, ha='right', fontsize=12)  # Rotate x-axis labels
+plt.yticks(fontsize=12)
+plt.tight_layout()
+plt.show()
