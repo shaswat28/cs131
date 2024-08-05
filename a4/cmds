@@ -1,0 +1,82 @@
+!pip3 install -U ucimlrepo 
+
+from ucimlrepo import fetch_ucirepo 
+import pandas as pd
+import numpy as np
+import seaborn as sns
+from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn import preprocessing
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+
+
+1. 
+winecsv = 'winequality-white.csv'
+winedf= pd.read_csv(winecsv, delimiter = ';')
+
+print(winedf.head(5))
+
+winedf.describe()
+
+2. 
+winedf.corr()
+
+3.
+ax = winedf['quality'].plot.hist()
+ax.set_xlabel('Quality')
+ax.set_title('Wine Quality')
+
+4.
+scaler = StandardScaler()
+scaled_winedf = pd.DataFrame(scaler.fit_transform(winedf), columns=winedf.columns)
+plt.figure(figsize=(18, 10))  
+sns.violinplot(data=scaled_winedf, inner="quartile", scale="width")
+
+5.
+X = winedf[['alcohol']]
+y = winedf['quality']
+
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+intercept = model.intercept_
+coefficient = model.coef_[0]
+rmse = mean_squared_error(y, y_pred, squared=False)  # Calculate RMSE directly
+r2 = r2_score(y, y_pred)
+
+print(f'Intercept: {intercept}')
+print(f'Coefficient: {coefficient}')
+print(f'RMSE: {rmse}')
+print(f'R²: {r2}')
+plt.scatter(X, y, color='blue', label='Data points')
+plt.plot(X, y_pred, color='red', linewidth=2, label='Regression line')
+plt.xlabel('Alcohol')
+plt.ylabel('Quality')
+plt.title('Linear Regression: Alcohol vs. Quality')
+plt.legend()
+plt.show()
+
+6.
+
+X = winedf[['volatile acidity', 'alcohol', 'density']]
+y = winedf['quality']
+
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+intercept = model.intercept_
+coefficients = model.coef_
+rmse = np.sqrt(mean_squared_error(y, y_pred))  # Calculate RMSE directly
+r2 = r2_score(y, y_pred)
+
+print(f'Intercept: {intercept}')
+print('Coefficients:')
+for feature, coef in zip(X.columns, coefficients):
+print(f'  {feature}: {coef}')
+print(f'RMSE: {rmse}')
+print(f'R²: {r2}')
